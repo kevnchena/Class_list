@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Class_list"
         mc:Ignorable="d"
-        Title="MainWindow" Height="509" Width="880">
+        Title="MainWindow" Height="542" Width="1046">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -21,7 +21,7 @@
 
             <Label Content="學生" VerticalAlignment="Center" Width="50" Height="30"
                    FontSize="14" RenderTransformOrigin="0.503,0.545" HorizontalContentAlignment="Center"/>
-            <ComboBox x:Name="cmbStudent" Width="300" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cmbStudent" Width="300" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="cmbStudent_SelectionChanged"/>
 
         </StackPanel>
         <TabControl Grid.Row="1">
@@ -32,6 +32,14 @@
                 <TreeView x:Name="lbCourse" Background="#FFE5E5E5" />
             </TabItem>
         </TabControl>
-
+        <ListView x:Name="lvRecord" Grid.Row="1" Grid.Column="2"/>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button x:Name="btnRegister" Content="選" Width="30" Height="30" Margin="0,120,0,0"/>
+            <Button x:Name="btnWithdrawl" Content="退" Width="30" Height="30" Margin="0,30,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
+            <StatusBar Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+            <Label Name="lbStatus" VerticalAlignment="Center" HorizontalAlignment="Left" Width="500" Height="30"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -21,6 +21,12 @@ namespace Class_list
     public partial class MainWindow : Window
     {
         List<Student> students = new List<Student>();
+        Student selectedStudent = null;
+
+        List<Teacher> teachers = new List<Teacher>();
+
+        List<Course> courses = new List<Course>();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +38,18 @@ namespace Class_list
             students.Add(new Student { StudentId = "A1234", StudentName = "你" });
             students.Add(new Student { StudentId = "A1234a", StudentName = "你1" });
             students.Add(new Student { StudentId = "A1234b", StudentName = "你2" });
+            cmbStudent.ItemsSource = students;
+        }
+
+        private void cmbStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedStudent = (Student)cmbStudent.SelectedItem;
+            DisplayStatus(selectedStudent.ToString());
+        }
+
+        private void DisplayStatus(string v)
+        {
+            lbStatus.Content = $"選取學生: {v}";
         }
     }
 }
