@@ -19,9 +19,9 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal" Background="#FFE0D6D6">
 
-            <Label Content="學生" VerticalAlignment="Center" Width="50" Height="30"
+            <Label Content="學生" VerticalAlignment="Center" Width="64" Height="30"
                    FontSize="14" RenderTransformOrigin="0.503,0.545" HorizontalContentAlignment="Center"/>
-            <ComboBox x:Name="cmbStudent" Width="300" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="cmbStudent_SelectionChanged"/>
+            <ComboBox x:Name="cmbStudent" Width="300" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="cmbStudent_SelectionChanged"/>
 
         </StackPanel>
         <TabControl Grid.Row="1">
