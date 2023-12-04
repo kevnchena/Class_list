@@ -27,6 +27,16 @@
         <TabControl Grid.Row="1">
             <TabItem Header="以教師分類">
                 <TreeView x:Name="tvTeacher" Background="#FFE1FFEF">
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type local:Teacher}" ItemsSource="{Binding TeachingCourses}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding TeacherName}"/>
+                                <TextBlock Text="("/>
+                                <TextBlock Text="{Binding TeachingCourses.Count}"/>
+                                <TextBlock Text=")"/>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
                 </TreeView>
             </TabItem>
             <TabItem Header="所有課程">
