@@ -36,7 +36,7 @@ namespace Class_list
 
         private void InitializeCourse()
         {
-            Teacher teacher1=new Teacher("陳定宏");
+            Teacher teacher1=new Teacher("陳定宏"); //先宣告teacher實例
             teacher1.TeachingCourses.Add(new Course(teacher1) { CourseName = "視窗程式設計", Type = "選修", Point = 3, OpeningClass = "四技二甲" });
             teacher1.TeachingCourses.Add(new Course(teacher1) { CourseName = "視窗程式設計", Type = "選修", Point = 3, OpeningClass = "四技二乙" });
             teacher1.TeachingCourses.Add(new Course(teacher1) { CourseName = "視窗程式設計", Type = "選修", Point = 3, OpeningClass = "四技二丙" });
@@ -46,6 +46,16 @@ namespace Class_list
             teacher2.TeachingCourses.Add(new Course(teacher2) { CourseName = "計算機數學", Type = "必修", Point = 3, OpeningClass = "四技三甲" });
             teacher2.TeachingCourses.Add(new Course(teacher2) { CourseName = "計算機數學", Type = "必修", Point = 3, OpeningClass = "四技三乙" });
             teacher2.TeachingCourses.Add(new Course(teacher2) { CourseName = "計算機數學", Type = "必修", Point = 3, OpeningClass = "五專四甲" });
+
+            Teacher teacher3 = new Teacher("陳福坤");
+            teacher3.TeachingCourses.Add(new Course(teacher3) { CourseName = "計算機概論", Type = "必修", Point = 3, OpeningClass = "資工一甲" });
+            teacher3.TeachingCourses.Add(new Course(teacher3) { CourseName = "計算機概論", Type = "必修", Point = 3, OpeningClass = "資工一乙" });
+            teacher3.TeachingCourses.Add(new Course(teacher3) { CourseName = "計算機概論", Type = "必修", Point = 3, OpeningClass = "資工一丙" });
+
+            teachers.Add(teacher1);
+            teachers.Add(teacher2);
+            teachers.Add(teacher3);
+            tvTeacher.ItemsSource= teachers;
         }
 
         private void InitializeStudent()
@@ -54,6 +64,7 @@ namespace Class_list
             students.Add(new Student { StudentId = "A1234a", StudentName = "你1" });
             students.Add(new Student { StudentId = "A1234b", StudentName = "你2" });
             cmbStudent.ItemsSource = students;
+            cmbStudent.SelectedIndex = 0;
         }
 
         private void cmbStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)

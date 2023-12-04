@@ -13,6 +13,11 @@ namespace Class_list
         
         }
 
+        public override string ToString()
+        {
+            return TeacherName;
+        }
+
     }
 }
 
