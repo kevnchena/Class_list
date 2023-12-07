@@ -55,14 +55,18 @@
                 <ListBox x:Name="lbCourse" Background="#FFE5E5E5">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding CourseName}"/>
-                                    <TextBlock Text=" / "/>
-                                    <TextBlock Text="{Binding Point}" Foreground="#FF4F99EC"/>
-                                    <TextBlock Text="學分 "/>
-                                    <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
-                                    <TextBlock Text=" / "/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding CourseName}"/>
+                                        <TextBlock Text=" / "/>
+                                        <TextBlock Text="{Binding Point}" Foreground="#FF4F99EC"/>
+                                        <TextBlock Text="學分 "/>
+                                        <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="開課班級: "/>
                                     <TextBlock Text="{Binding OpeningClass}" Foreground="#FF2A32A5"/>
                                 </StackPanel>
                             </StackPanel>
