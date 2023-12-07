@@ -30,18 +30,45 @@
                     <TreeView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type local:Teacher}" ItemsSource="{Binding TeachingCourses}">
                             <StackPanel Orientation="Horizontal">
+                                <Image Source="/螢幕擷取畫面 2023-12-08 004337.png" Width="20" Height="20"/>
                                 <TextBlock Text="{Binding TeacherName}"/>
                                 <TextBlock Text="("/>
                                 <TextBlock Text="{Binding TeachingCourses.Count}"/>
                                 <TextBlock Text=")"/>
                             </StackPanel>
                         </HierarchicalDataTemplate>
+                        <DataTemplate DataType="{x:Type local:Course}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding CourseName}"/>
+                                <TextBlock Text=" / "/>
+                                <TextBlock Text="{Binding Point}" Foreground="#FF4F99EC"/>
+                                <TextBlock Text="學分 "/>
+                                <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
+                                <TextBlock Text=" / "/>
+                                <TextBlock Text="{Binding OpeningClass}" Foreground="#FF2A32A5"/>
+                            </StackPanel>
+                        </DataTemplate>
                     </TreeView.Resources>
                 </TreeView>
             </TabItem>
             <TabItem Header="所有課程">
-                <TreeView x:Name="lbCourse" Background="#FFE5E5E5" >
-                </TreeView>
+                <ListBox x:Name="lbCourse" Background="#FFE5E5E5">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding CourseName}"/>
+                                    <TextBlock Text=" / "/>
+                                    <TextBlock Text="{Binding Point}" Foreground="#FF4F99EC"/>
+                                    <TextBlock Text="學分 "/>
+                                    <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
+                                    <TextBlock Text=" / "/>
+                                    <TextBlock Text="{Binding OpeningClass}" Foreground="#FF2A32A5"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </TabItem>
         </TabControl>
         <ListView x:Name="lvRecord" Grid.Row="1" Grid.Column="2" Background="#FFD1F4F5"/>

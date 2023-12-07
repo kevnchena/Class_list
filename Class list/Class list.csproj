@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="螢幕擷取畫面 2023-12-08 004337.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="螢幕擷取畫面 2023-12-08 004337.png" />
+  </ItemGroup>
+
 </Project>
