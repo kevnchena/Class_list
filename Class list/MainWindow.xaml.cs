@@ -24,9 +24,10 @@ namespace Class_list
         Student selectedStudent = null;
 
         List<Teacher> teachers = new List<Teacher>();
+        Teacher selectedteacher = null;
 
         List<Course> courses = new List<Course>();
-        
+        Course selectedcourse = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -86,6 +87,22 @@ namespace Class_list
         private void DisplayStatus(string v)
         {
             lbStatus.Content = $"選取學生: {v}";
+        }
+
+        private void tvTeacher_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (tvTeacher.SelectedItem is Teacher)
+            {
+                selectedteacher = (Teacher)tvTeacher.SelectedItem;
+                lbStatus.Content = $"選取老師: {selectedteacher.ToString()}";
+            }
+
+            if (tvTeacher.SelectedItem is Course)
+            {
+                selectedcourse = (Course)tvTeacher.SelectedItem;
+                lbStatus.Content = $"選取課程: {selectedcourse.ToString()}";
+            }
+
         }
     }
 }

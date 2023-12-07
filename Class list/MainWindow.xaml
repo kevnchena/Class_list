@@ -26,7 +26,7 @@
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Header="以教師分類">
-                <TreeView x:Name="tvTeacher" Background="#FFE1FFEF">
+                <TreeView x:Name="tvTeacher" Background="#FFE1FFEF" SelectedItemChanged="tvTeacher_SelectedItemChanged">
                     <TreeView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type local:Teacher}" ItemsSource="{Binding TeachingCourses}">
                             <StackPanel Orientation="Horizontal">
@@ -45,7 +45,7 @@
                                 <TextBlock Text="學分 "/>
                                 <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
                                 <TextBlock Text=" / "/>
-                                <TextBlock Text="{Binding OpeningClass}" Foreground="#FF2A32A5"/>
+                                <TextBlock Text="{Binding OpeningClass}"/>
                             </StackPanel>
                         </DataTemplate>
                     </TreeView.Resources>
@@ -57,13 +57,11 @@
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding CourseName}"/>
-                                        <TextBlock Text=" / "/>
-                                        <TextBlock Text="{Binding Point}" Foreground="#FF4F99EC"/>
-                                        <TextBlock Text="學分 "/>
-                                        <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding CourseName}"/>
+                                    <TextBlock Text=" / "/>
+                                    <TextBlock Text="{Binding Point}" Foreground="#FF4F99EC"/>
+                                    <TextBlock Text="學分 "/>
+                                    <TextBlock Text="{Binding Type}" Foreground="#FFFF2E2E"/>
                                 </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="開課班級: "/>
