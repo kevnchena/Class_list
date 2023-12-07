@@ -57,7 +57,8 @@ namespace Class_list
             teachers.Add(teacher2);
             teachers.Add(teacher3);
 
-            tvTeacher.ItemsSource= teachers; //宣告給treeview使用
+            ////為了給tree view.ItemSource 使用的前置作業
+            tvTeacher.ItemsSource= teachers;
 
             foreach (Teacher teacher in teachers) //抓teacher.TeachingCourses集中
             {
@@ -66,7 +67,8 @@ namespace Class_list
                     courses.Add(course);
                 }
             }
-            lbCourse.ItemsSource= courses; //宣告給labelbox使用
+            lbCourse.ItemsSource= courses;
+            /////////////////////////////////////////
         }
 
         private void InitializeStudent()
