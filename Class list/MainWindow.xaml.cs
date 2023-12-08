@@ -27,7 +27,11 @@ namespace Class_list
         Teacher selectedteacher = null;
 
         List<Course> courses = new List<Course>();
-        Course selectedcourse = null;
+        Course selectedCourse = null;
+
+        List<Record> records = new List<Record>();
+        Record selectedRecord = null; 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -101,10 +105,74 @@ namespace Class_list
 
             if (tvTeacher.SelectedItem is Course)
             {
-                selectedcourse = (Course)tvTeacher.SelectedItem;
-                lbStatus.Content = $"選取課程: {selectedcourse.ToString()}";
+                selectedCourse = (Course)tvTeacher.SelectedItem;
+                lbStatus.Content = $"選取課程: {selectedCourse.ToString()}";
             }
 
+        }
+
+        private void lbCourse_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedCourse = (Course)tvTeacher.SelectedItem;
+            lbStatus.Content = $"選取課程: {selectedCourse.ToString()}";
+        }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+               if(selectedStudent==null || selectedCourse == null)
+            {
+                MessageBox.Show("請選取學生或課程");
+                return;
+            }
+            else
+            {
+                Record newRecord = new Record
+                {
+                    SelectedCourse = selectedCourse,
+                    SelectedStudent = selectedStudent,
+                };
+
+                foreach(Record r in records)
+                {
+                    if (r.Equals(newRecord))
+                    {
+                        MessageBox.Show($"{selectedStudent.StudentName}已經選過\n{selectedCourse.CourseName}課程");
+                        return;
+                    }
+                }
+
+                records.Add(newRecord);
+                lvRecord.ItemsSource = records;
+                lvRecord.Items.Refresh();
+            }
+
+        }
+
+        private void lvRecord_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedRecord = (Record)lvRecord.SelectedItem;
+            if (selectedRecord == null)
+            {
+                lbStatus.Content = "";
+                return;
+            }
+            lbStatus.Content = $"{selectedRecord.ToString()}";
+        }
+
+        private void btnWithdrawl_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedRecord != null)
+            {
+                records.Remove(selectedRecord);
+                lvRecord.ItemsSource = records;
+                lvRecord.Items.Refresh();
+
+            }
+            else
+            {
+                MessageBox.Show("請選擇要刪除的紀錄");
+                return;
+            }
         }
     }
 }
