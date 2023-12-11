@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -77,9 +80,9 @@ namespace Class_list
 
         private void InitializeStudent()
         {
-            students.Add(new Student { StudentId = "A1234", StudentName = "你" });
-            students.Add(new Student { StudentId = "A1234a", StudentName = "你1" });
-            students.Add(new Student { StudentId = "A1234b", StudentName = "你2" });
+            students.Add(new Student { StudentId = "A1G348", StudentName = "陳曉明" });
+            students.Add(new Student { StudentId = "A1F599", StudentName = "王大偉" });
+            students.Add(new Student { StudentId = "A1S400", StudentName = "李忠盧" });
             cmbStudent.ItemsSource = students;
             cmbStudent.SelectedIndex = 0;
         }
@@ -151,15 +154,11 @@ namespace Class_list
         private void lvRecord_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedRecord = (Record)lvRecord.SelectedItem;
-            if (selectedRecord == null)
-            {
-                lbStatus.Content = "";
-                return;
-            }
+            if (selectedRecord == null)return;
             lbStatus.Content = $"{selectedRecord.ToString()}";
         }
 
-        private void btnWithdrawl_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (selectedRecord != null)
             {
@@ -173,6 +172,18 @@ namespace Class_list
                 MessageBox.Show("請選擇要刪除的紀錄");
                 return;
             }
+        }
+
+        private void saveRecord_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Json Files(*.jaon)|*.txt|*.*";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string json = JsonSerializer.Serialize(records);
+                File.WriteAllText(saveFileDialog.FileName,json);
+            }
+        
         }
     }
 }

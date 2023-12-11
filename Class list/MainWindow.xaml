@@ -88,8 +88,8 @@
         </ListView>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Button x:Name="btnRegister" Content="選課" Width="40" Height="40" Margin="0,120,0,0" Click="btnRegister_Click"/>
-            <Button x:Name="btnWithdrawl" Content="退選" Width="40" Height="40" Margin="0,30,0,0" Click="btnWithdrawl_Click"/>
-            <Button x:Name="saveRecord" Content="儲存" Width="40" Height="40" Margin="0,30,0,0"/>
+            <Button x:Name="btnDelete" Content="退選" Width="40" Height="40" Margin="0,30,0,0" Click="btnDelete_Click"/>
+            <Button x:Name="saveRecord" Content="儲存" Width="40" Height="40" Margin="0,30,0,0" Click="saveRecord_Click"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
             <StatusBar Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
