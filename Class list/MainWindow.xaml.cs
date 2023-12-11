@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -177,10 +180,19 @@ namespace Class_list
         private void saveRecord_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Json Files(*.jaon)|*.txt|*.*";
+            saveFileDialog.Filter = "Json Files(*.json)|*.json |All Files(*.*)|*.*";
+            saveFileDialog.DefaultExt= "json";
+            saveFileDialog.AddExtension = true;
             if (saveFileDialog.ShowDialog() == true)
             {
-                string json = JsonSerializer.Serialize(records);
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    Encoder= JavaScriptEncoder.Create(UnicodeRanges.All),
+                    DefaultIgnoreCondition=JsonIgnoreCondition.WhenWritingNull,
+                    WriteIndented=true,
+                    ReferenceHandler = ReferenceHandler.Preserve
+                };
+                string json = JsonSerializer.Serialize(records,options);
                 File.WriteAllText(saveFileDialog.FileName,json);
             }
         
